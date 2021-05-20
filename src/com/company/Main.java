@@ -8,12 +8,11 @@ public class Main {
         me.firstName = "Filip";
         me.lastName = "Skośkiewicz";
         me.pet = new Animal("Felis", 2.0);
-        me.car = new Car("Punto II", "Fiat", "Red", 70);
+        Car fiat = new Car("Punto", "Fiat", "red", 70);
+        fiat.price = 2000.0;
+        me.setSalary(4000.0);
+        me.setCar(fiat);
 
-        me.setSalary(2500.0);
-        me.getSalary();
-        me.setSalary(5000.0);
-        me.getSalary();
 
     }
 }
