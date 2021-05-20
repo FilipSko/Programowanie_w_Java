@@ -10,12 +10,10 @@ public class Main {
         me.pet = new Animal("Felis", 2.0);
         me.car = new Car("Punto II", "Fiat", "Red", 70);
 
-        me.pet.feed();
-        me.pet.takeForAWalk();
-        me.pet.takeForAWalk();
-        me.pet.takeForAWalk();
-
-        System.out.println(me.car.model);
+        me.setSalary(2500.0);
+        me.getSalary();
+        me.setSalary(5000.0);
+        me.getSalary();
 
     }
 }
