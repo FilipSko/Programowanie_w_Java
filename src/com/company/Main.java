@@ -15,24 +15,14 @@ public class Main {
         dog.name = "Fado";
         dog.weight = 30.0;
         me.pet = dog;
-        Car fiat = new Car(1, "Punto", "Fiat");
+        Car fiat = new Car(1, "Punto", "Fiat", 2003);
         fiat.color = "red";
         fiat.horsePower = 70;
         fiat.price = 2000.0;
-        Car fiat2 = new Car(1, "Punto", "Fiat");
-        fiat2.color = "red";
-        fiat2.horsePower = 70;
-        fiat2.price = 2000.0;
-        Phone sony = new Phone("Sony", "Xperia", 4.7, "Android");
+        Phone sony = new Phone("Sony", "Xperia", 4.7, "Android", 2015);
         me.mobilePhone = sony;
 
-        System.out.println("Porównanie: " + (fiat == fiat2));
-        System.out.println("Metoda fiat.equals(fiat2): " + fiat.equals(fiat2));
-        System.out.println(fiat2);
-        System.out.println(me);
-        System.out.println(sony);
-        System.out.println(dog);
-
-
+        sony.turnOn();
+        fiat.turnOn();
     }
 }
