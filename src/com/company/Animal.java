@@ -1,26 +1,27 @@
 package com.company;
-import java.util.Scanner;
+
 import java.io.File;
+import java.util.Scanner;
 
 public class Animal {
-    final public String species;
-    private Double weight;
+    public String species;
+    public Double weight;
     String name;
     File pic;
 
-    public Animal(String species, Double weight){
-        this.species = species;
-        this.weight = weight;
+    public String toString() {
+        return "Species: " + species + " waga: " + weight + " imię: " + name + " Zdjęcie " + pic;
     }
-    void feed(){
-        System.out.println("Twój zwierzat waży: " + this.weight + "kg.");
-        if (this.weight <= 0){
+
+    void feed() {
+        System.out.println("Twój zwierzak waży: " + this.weight + "kg.");
+        if (this.weight <= 0) {
             System.out.println("Nie można nakarmić martwego zwierzata");
             System.exit(0);
-        }
-        else{
+        } else {
             System.out.println("Dzięki za jedzienie");
-            this.weight += 1;System.out.println("Twój zwierzak przytył i waży " + this.weight + "kg.");
+            this.weight += 1;
+            System.out.println("Twój zwierzak przytył i waży " + this.weight + "kg.");
         }
     }
     void takeForAWalk(){

@@ -1,5 +1,8 @@
 package com.company;
 
+import com.company.devices.Car;
+import com.company.devices.Phone;
+
 import java.time.LocalDateTime;
 
 public class Human {
@@ -48,5 +51,9 @@ public class Human {
             System.out.println("Zapisz się na studia i znajdź nową robotę lub błagaj o podwyżkę.");
         }
 
+    }
+
+    public String toString() {
+        return firstName + " " + lastName + " posiada zwierzę: " + pet.name + " i telefon " + mobilePhone + ". Samochód: " + car + ". Jego pensja to: " + salary;
     }
 }
