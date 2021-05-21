@@ -1,4 +1,4 @@
-package com.company;
+package com.company.creatures;
 
 import com.company.devices.Car;
 import com.company.devices.Phone;
@@ -6,9 +6,9 @@ import com.company.devices.Phone;
 import java.time.LocalDateTime;
 
 public class Human implements Sellable {
-    String firstName;
-    String lastName;
-    Animal pet;
+    public String firstName;
+    public String lastName;
+    public Pet pet;
     public Phone mobilePhone;
     public Car car;
     private Double salary;

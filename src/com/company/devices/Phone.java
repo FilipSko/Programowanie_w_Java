@@ -1,7 +1,7 @@
 package com.company.devices;
 
-import com.company.Human;
-import com.company.Sellable;
+import com.company.creatures.Human;
+import com.company.creatures.Sellable;
 
 public class Phone extends Device implements Sellable {
     final Double screenSize;
