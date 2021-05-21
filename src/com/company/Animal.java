@@ -3,7 +3,7 @@ package com.company;
 import java.io.File;
 import java.util.Scanner;
 
-public class Animal {
+public class Animal implements Sellable {
     public String species;
     public Double weight;
     String name;
@@ -38,14 +38,28 @@ public class Animal {
                 this.weight -= 1;
                 System.out.println("Twój zwierzak nie żyje");
                 System.exit(0);
-            }
-            else{
+            } else {
                 System.out.println("Uratowałeś mu życie doktorku, daj mu coś zjeść");
             }
-        }
-        else{
+        } else {
             this.weight -= 1;
             System.out.println("Twój zwierzak wrócił ze spaceru i waży teraz " + this.weight + "kg.");
         }
+    }
+
+    @Override
+    public void sell(Human seller, Human buyer, Double price) {
+        if (seller == buyer) {
+            System.out.println("Handlujesz sam ze sobą...");
+        } else if (seller.pet != this) {
+            System.out.println("Nie posiadasz tego zwierzęcia");
+        } else if (buyer.cash < price) {
+            System.out.println("Nie stać Cię na zakup tego zwierzęcia");
+        }
+        seller.cash += price;
+        buyer.cash -= price;
+        buyer.pet = seller.pet;
+        seller.pet = null;
+        System.out.println("Trasnakcja udana. Zwierzę zostało kupione za " + price);
     }
 }

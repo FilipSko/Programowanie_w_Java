@@ -5,13 +5,14 @@ import com.company.devices.Phone;
 
 import java.time.LocalDateTime;
 
-public class Human {
+public class Human implements Sellable {
     String firstName;
     String lastName;
     Animal pet;
-    Phone mobilePhone;
-    private Car car;
+    public Phone mobilePhone;
+    public Car car;
     private Double salary;
+    public Double cash;
 
     public Double getSalary() {
         LocalDateTime current = LocalDateTime.now();
@@ -55,5 +56,10 @@ public class Human {
 
     public String toString() {
         return firstName + " " + lastName + " posiada zwierzę: " + pet.name + " i telefon " + mobilePhone + ". Samochód: " + car + ". Jego pensja to: " + salary;
+    }
+
+    @Override
+    public void sell(Human seller, Human buyer, Double price) {
+        System.out.println("Za handel ludźmi można trafić do więzienia na czas nie krótszy od lat 3!");
     }
 }
