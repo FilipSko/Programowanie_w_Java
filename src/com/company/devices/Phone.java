@@ -14,12 +14,13 @@ public class Phone extends Device implements Sellable {
     static final String DEFAULT_SERVER_PROTOCOL = "http";
     static final String DEFAULT_VERSION_NAME = "latest";
 
-    public Phone(String producer, String model, Double screenSize, String operatingSystem, int yearOfProduction) {
-        super(model, producer, yearOfProduction);
+    public Phone(String producer, String model, Double screenSize, String operatingSystem, int yearOfProduction, Double cost) {
+        super(model, producer, yearOfProduction, cost);
         this.screenSize = screenSize;
         this.operatingSystem = operatingSystem;
     }
 
+    @Override
     public String toString() {
         return producer + " " + model + " " + screenSize + " " + operatingSystem + " " + yearOfProduction;
     }

@@ -14,7 +14,7 @@ public abstract class Animal implements Sellable, Feedable {
         this.name = name;
         this.pic = pic;
     }
-
+    @Override
     public String toString() {
         return "Species: " + species + " waga: " + weight + " imię: " + name + " Zdjęcie " + pic;
     }
