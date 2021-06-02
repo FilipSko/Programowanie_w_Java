@@ -54,19 +54,6 @@ public class Human implements Sellable {
 
     }
 
-    public Car getCar(int parkingPlaceNumber) {
-        return this.garage[parkingPlaceNumber];
-    }
-
-    public void setCar(Car car, int parkingPlaceNumber) {
-        this.garage[parkingPlaceNumber] = car;
-
-    }
-
-    public void takeCar(int parkingPlaceNumber) {
-        this.garage[parkingPlaceNumber] = null;
-    }
-
     public Double getGaragePrice() {
         Double garagePrice = 0.0;
         for (Device car : this.garage) {
@@ -98,7 +85,10 @@ public class Human implements Sellable {
         for (int i = 0; i < garage.length; i++) {
             if (this.garage[i] == null) {
                 this.garage[i] = newCar;
+                newCar.owners.add(this);
             }
+
+            return;
         }
     }
 
