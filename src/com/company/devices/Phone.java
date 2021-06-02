@@ -3,21 +3,19 @@ package com.company.devices;
 import com.company.creatures.Human;
 import com.company.creatures.Sellable;
 
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Phone extends Device implements Sellable {
     final Double screenSize;
     final String operatingSystem;
-    static final String DEFAULT_SERVER_ADDRESS = "100.0.0.1";
-    static final String DEFAULT_SERVER_PROTOCOL = "http";
-    static final String DEFAULT_VERSION_NAME = "latest";
+    List<Application> appList;
 
     public Phone(String producer, String model, Double screenSize, String operatingSystem, int yearOfProduction, Double cost) {
         super(model, producer, yearOfProduction, cost);
         this.screenSize = screenSize;
         this.operatingSystem = operatingSystem;
+        this.appList = new ArrayList<>();
     }
 
     @Override
@@ -46,42 +44,63 @@ public class Phone extends Device implements Sellable {
         System.out.println("Trasnakcja udana. Telefon został kupiony za " + price);
     }
 
-    public void installAnApp(String appName) {
-        this.installAnApp(appName, DEFAULT_VERSION_NAME);
-    }
-
-    public void installAnApp(String appName, String version) {
-        this.installAnApp(appName, version, DEFAULT_SERVER_ADDRESS);
-    }
-
-    public void installAnApp(String appName, String version, String server) {
-        URL url = null;
-        try {
-            url = new URL(DEFAULT_SERVER_PROTOCOL, server, appName + version);
-            this.installAnApp(url);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
+    public void installAnApp(Human owner, Application app) {
+        if (owner.cash < app.price) {
+            System.out.println("Nie masz wystarczających środków");
+        } else {
+            owner.cash = owner.cash - app.price;
+            this.appList.add(app);
         }
     }
 
-    public void installAnApp(URL appURL) {
-        System.out.println("Pobieranie aplikacji " + appURL.getFile() + " ze strony " + appURL.getHost());
-        System.out.println("Sprawdzanie, czy aplikacja jest płatna");
-        System.out.println("Sprawdzanie, czy masz pieniądze");
-        System.out.println("Sprawdzanie, czy masz miejsce");
-        System.out.println("Jeśli aplikacja jest bezpłatna lub zapłaciłeś, rozpakowuję.");
-        System.out.println("Instalowanie aplikacji " + appURL.getFile());
+    public boolean isInstalled(Application appObject) {
+        for (Application app : appList) {
+            if (app == appObject) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    public void installAnApp(List<String> appNames) {
-        String[] lista = new String[appNames.size()];
-        lista = appNames.toArray(lista);
-        this.installAnApp(lista);
+    public boolean isInstalled(String appName) {
+        for (Application app : appList) {
+            if (app.name.equals(appName)) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    public void installAnApp(String[] appNames) {
-        for (String appName : appNames) {
-            this.installAnApp(appName);
+    public void freeApps() {
+        for (Application app : appList) {
+            if (app.price == 0.0) {
+                System.out.println(app);
+            }
+        }
+    }
+
+    public void allApps() {
+        for (Application app : appList) {
+            System.out.println(app);
+        }
+    }
+
+    public void nameAppSort() {
+        appList.sort(Application.names);
+
+        for (Application app : appList) {
+            System.out.println(app);
+        }
+    }
+
+    public void priceAppSort() {
+        appList.sort(Application.prices);
+
+        for (Application app : appList) {
+            System.out.println(app);
         }
     }
 }
+
+
+
