@@ -3,65 +3,61 @@ package com.company;
 import com.company.creatures.FarmAnimal;
 import com.company.creatures.Human;
 import com.company.creatures.Pet;
-import com.company.devices.Car;
-import com.company.devices.Disel;
-import com.company.devices.Electric;
-import com.company.devices.LPG;
+import com.company.devices.*;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        Human me = new Human("Filip", "Skośkiewicz");
+        Human me = new Human("Filip", "Skośkiewicz", 2);
         me.firstName = "Filip";
         me.lastName = "Skośkiewicz";
         Pet dog = new Pet("dogos", 30.0, "Fado", null);
         FarmAnimal cow = new FarmAnimal("meat", 120.0, "Milka", null);
 
         Car fiat = new Disel("Fiat", "Punto", 3004, 2500.0);
-        me.setCar(fiat, 1);
         Car volvo = new Electric("Volvo", "Recharge", 2020, 230000.0);
         Car BMW = new LPG("BMW", "3", 1998, 1500.0);
         BMW.color = "black";
         BMW.horsePower = 140;
         volvo.color = "white";
         volvo.horsePower = 320;
-        Human brat = new Human("Michał", "Skośkiewicz");
-        brat.setSalary(500000.0);
-        brat.cash = 1000000.0;
+
+        Human brat = new Human("Michał", "Skośkiewicz", 3);
+        Phone sony = new Phone("Sony", "Xperia", 4.7, "Android", 2013, 2500.0);
+        Phone iphone = new Phone("Apple", "XR", 5.1, "iOS", 2018, 3700.0);
+
+        me.addCar(fiat);
+        brat.addCar(volvo);
+        me.cash = 1000.0;
+        brat.cash = 400.0;
+        System.out.println("czy brat ma volvo? " + brat.hasCar(volvo));
+        System.out.println("czy ja mam fiata? " + me.hasCar(fiat));
+        fiat.sell(me, brat, 200.0);
+        volvo.sell(brat, me, 800.0);
+        System.out.println("Liczba sprzedaży fiata: " + fiat.numberOfSells());
+        System.out.println("Liczba właścicieli fiata: " + fiat.owners.size());
+
+        Application tinder = new Application("tinder", "1.3.2", 0.0);
+        Application asphalt = new Application("asphalt", "4.2.2", 20.0);
+        Application luxury = new Application("luxury", "1.0.0", 750.0);
+
+        me.mobilePhone = sony;
+        brat.mobilePhone = iphone;
+
+        sony.installAnApp(me, tinder);
+        iphone.installAnApp(brat, asphalt);
+
+        System.out.println("Czy sony ma apkę tinder? " + sony.isInstalled(tinder));
+        System.out.println("Czy iphone ma apkę asphalt? " + iphone.isInstalled("asphalt"));
+
+        sony.installAnApp(me, luxury);
         me.cash = 2000.0;
-        brat.setCar(volvo, 0);
-        brat.setCar(BMW, 1);
+        sony.installAnApp(me, luxury);
+        sony.allApps();
+        sony.nameAppSort();
+        sony.priceAppSort();
 
-        System.out.println(brat.getGaragePrice());
-        System.out.println(brat.sortCars());
-
-        fiat.sell(me, brat, 500.0);
-        System.out.println(brat);
-        /*
-        Car fiat = new Disel("Fiat", "Punto", 2003);
-        fiat.refuel();
-
-        Car volvo = new Electric("Volvo", "Recharge", 2020);
-        volvo.refuel();
-
-        Car BMW = new LPG("BMW", "3", 1998);
-        BMW.refuel();
-
-        Phone sony = new Phone("Sony", "Xperia", 4.7, "Android", 2013);
-        sony.installAnApp("Pokemongo");
-        sony.installAnApp("Messenger", "2.4.1.");
-        sony.installAnApp("Signal", "3.1.1.", "download.signal.com");
-
-        List<String> appNames = new ArrayList<>();
-        appNames.add("Google");
-        appNames.add("Yazio");
-        appNames.add("Facebook");
-
-        sony.installAnApp(appNames);
-        */
-
-        System.out.println(me);
 
     }
 }
